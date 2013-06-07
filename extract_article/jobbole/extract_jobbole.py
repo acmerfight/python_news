@@ -10,14 +10,11 @@ def to_tryurl_list():
 
 def extract_content():
 
-    HTTP404_ERROR = "HTTP Error 404: Not Found"
     for tryurl in to_tryurl_list(): 
         url_handle = PyQuery(tryurl) 
-
         article_titles = url_handle('.grid-8 .meta-title')
         if not article_titles:
             break
-        print article_titles
         for article_title in article_titles:
             article_title = PyQuery(article_title)
             sub_content = (article_title.text(), article_title.attr("href"))
