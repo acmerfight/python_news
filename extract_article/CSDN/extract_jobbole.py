@@ -11,16 +11,14 @@ def to_tryurl_list():
 def extract_content():
 
     for tryurl in to_tryurl_list(): 
-        url_handle = PyQuery(tryurl) 
+        complete_page = PyQuery(tryurl) 
 
-        article_titles = url_handle('.content .unit h1')
-        #print article_titles
+        article_titles = complete_page('.content .unit h1')
         if not article_titles:
             break
         for article_title in article_titles:
             article_title = PyQuery(article_title)
             sub_content = (article_title.text(), article_title.attr("href"))
-            print article_title.text(), article_title.attr("[href]")
-
+            print article_title.text(), article_title.find("a").attr('href')
 if __name__ == "__main__":
     extract_content()
