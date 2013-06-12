@@ -9,7 +9,7 @@ def to_tryurl_list():
         yield url
 
 def extract_content():
-
+    """ 抓取需要的文章题目和链接 """
     for tryurl in to_tryurl_list(): 
         complete_page = PyQuery(tryurl) 
 
